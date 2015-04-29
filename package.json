@@ -13,7 +13,7 @@
     "ejs": "*",
     "morgan": "~1.5.1",
     "serve-favicon": "~2.2.0",
-	"mongodb": "*",
-	"mysql": "~2.6.2"
+    "mongodb": "*",
+    "mysql": "~2.6.2"
   }
 }
