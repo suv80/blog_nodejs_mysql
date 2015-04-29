@@ -5,8 +5,7 @@ var mysql = require('../public/libs/dbConn');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	//var sql=new mysql();
-	
+	/*
 	mysql.test(function(err,message){
 		if(err){
 			console.log(message);
@@ -15,17 +14,17 @@ router.get('/', function(req, res, next) {
 		
 		console.log(message);
 	});
-	
+	*/
 	mysql.query('select * from nodejs',function(err,arr){
 		if(err){
-			console.log(arr);
-			return false;
+			arr=[];
 		}
 		
-		console.log(arr);
+		res.render('index', {
+			title: 'Express',
+			sqlResult: arr
+		});
 	});
-	
-	res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
