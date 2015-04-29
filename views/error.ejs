@@ -1,0 +1,10 @@
+<%include header.ejs%>
+
+<p><span style="font-size:60px">:(</span></p>
+<h1>Cause:<%=message%></h1>
+<h1>Code:<%=error.status%></h1>
+<pre>
+	<%=error.stack%>
+</pre>
+
+<%include footer.ejs%>
