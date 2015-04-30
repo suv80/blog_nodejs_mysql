@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('../public/libs/dbConn');
+var mysql = require('../libs/dbConn');
 
 
 /* GET home page. */

@@ -7,6 +7,14 @@ function conn(){
 		password : 'root',
 		database : 'test'
 	});
+	
+	this.test(function(err,message){
+		if(err){
+			console.log('error:',message);
+		}else{
+			console.log('ok,ID is:',message);
+		}
+	});
 }
 
 conn.prototype.test = function(callback){
