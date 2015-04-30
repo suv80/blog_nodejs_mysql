@@ -6,7 +6,7 @@
 
 需要安装的mysql驱动已经写入package.json中，只需要npm install就可以完成环境搭建。
 
-数据库操作封装在/public/libs/dbConn.js中，请根据自己的需要进行修改。
+数据库操作封装在/libs/dbConn.js中，请根据自己的需要进行修改。
 
 说明：
 
