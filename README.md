@@ -26,10 +26,11 @@
 
 5、如果有任何问题可以随时邮件给我 lionft@qq.com
 
----
+***
 date for update: 2015-05-06
 ---
 
++ 修改用户数据表结构，详见libs/userModel.js中的create函数
 + 修改数据模型错误
 + SQL防注入
 + 增加注册
