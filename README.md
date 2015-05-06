@@ -27,7 +27,7 @@
 5、如果有任何问题可以随时邮件给我 lionft@qq.com
 
 ***
-date for update: 2015-05-06
+date of update: 2015-05-06
 ---
 
 + 修改用户数据表结构，详见libs/userModel.js中的create函数
