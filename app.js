@@ -7,6 +7,10 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+//登录
+var login=require('./routes/login');
+//注册
+var register=require('./routes/register');
 
 var app = express();
 
@@ -24,6 +28,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+
+app.use('/login',login);
+app.use('/reg',register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

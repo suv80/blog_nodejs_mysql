@@ -31,10 +31,10 @@ conn.prototype.test = function(callback){
 	});
 };
 
-conn.prototype.query = function(sqlStr,callback){
+conn.prototype.query = function(sqlStr,arr,callback){
 	var connection = this.connection;
 	
-	connection.query(sqlStr, function(err, rows) {
+	connection.query(sqlStr,arr,function(err, rows) {
 		if(err){
 			callback(true,err.stack);
 			return false;
