@@ -24,8 +24,6 @@ router.post('/', function(req, res, next) {
 	
 	var sqlStr=userModel.isExistUserId();
 	
-	console.log(sqlStr);
-	
 	mysql.query(sqlStr,[params.user_id],isExistCallBack);
 	
 });
@@ -48,11 +46,7 @@ function isExistCallBack(err,arr){
 function insertCallBack(){
 	var params=request.body;
 	
-	console.log(request.body);
-	
 	var sqlStr=userModel.insert();
-	
-	console.log(sqlStr);
 	
 	mysql.query(sqlStr,[params.user_id,md5(params.pwd,'hex')],function(err,arr){
 		var msg='';

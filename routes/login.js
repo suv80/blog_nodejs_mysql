@@ -14,13 +14,8 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	var params=req.body;
 	
-	console.log(req.body);
-	
 	var sqlStr=userModel.isAvailableUser();
-	
 	var sqlParams=[params.user_id,md5(params.pwd,'hex')];
-	
-	console.log(sqlParams)
 	
 	mysql.query(sqlStr,sqlParams,function(err,arr){
 		if(err){
