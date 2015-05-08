@@ -3,8 +3,8 @@ var router = express.Router();
 var mysql = require('../libs/dbConn');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-	mysql.query('select * from nodejs', function (err, arr) {
+router.get('/', function (req, res, next) {	
+	mysql.query('select * from user_info', function (err, arr) {
 		if (err) {
 			arr = [];
 		}

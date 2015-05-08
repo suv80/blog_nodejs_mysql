@@ -69,7 +69,6 @@ function insertCallBack() {
 			});
 		}
 	});
-
 }
 
 module.exports = router;

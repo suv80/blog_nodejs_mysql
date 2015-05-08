@@ -10,27 +10,26 @@
 				<a class="btn btn-default" href="/login">登录</a>
 			</p>
 		</div>
-		<%=sqlResult.length%>
 		<table class="table table-bordered">
 			<thead>
 				<tr>
 					<th>id</th>
 					<th>user</th>
 					<th>name</th>
-					<th>age</th>
 					<th>pwd</th>
-					<th>create date</th>
+					<th>register_date</th>
+					<th>last_login_date</th>
 				</tr>
 			</thead>
 			<tbody>
 				<%for(var i=0;i<sqlResult.length;i++){%>
 				<tr>
 					<td><%=sqlResult[i].id%></td>
-					<td><%=sqlResult[i]['user']%></td>
+					<td><%=sqlResult[i]['user_id']%></td>
 					<td><%=sqlResult[i]['name']%></td>
-					<td><%=sqlResult[i]['age']%></td>
 					<td><%=sqlResult[i]['pwd']%></td>
-					<td><%=sqlResult[i]['create_date']%></td>
+					<td><%=sqlResult[i]['register_date']%></td>
+					<td><%=sqlResult[i]['last_login_date']%></td>
 				</tr>
 				<%}%>
 			</tbody>
