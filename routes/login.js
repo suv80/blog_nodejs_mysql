@@ -68,7 +68,7 @@ function insertSessionInfo() {
 
 	var sqlStr = sessionModel.insert();
 
-	mysql.query(sqlStr, [cookie, params.user_id,md5(params.user_id,'hex')], function (err, arr) {
+	mysql.query(sqlStr, [cookie, params.user_id, md5(params.user_id, 'hex')], function (err, arr) {
 		if (err) {
 			sourceRes.render('error', {
 				title : 'ERROR',
@@ -92,11 +92,11 @@ function insertSessionInfo() {
 	});
 }
 
-function updateLastLoginDate(){
-	var sqlStr=userModel.updateLastLoginDate();
-	
-	mysql.query(sqlStr,[params.user_id],function(err,arr){
-		if(err){
+function updateLastLoginDate() {
+	var sqlStr = userModel.updateLastLoginDate();
+
+	mysql.query(sqlStr, [params.user_id], function (err, arr) {
+		if (err) {
 			sourceRes.render('error', {
 				title : 'ERROR',
 				message : err.stack,

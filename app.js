@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(function (req, res, next) {
 	if (req.cookies.UID) {
 		var sqlstr = sessionModel.getUidAndSid();
-		
+
 		console.log(sqlstr);
 
 		mysql.query(sqlstr, [req.cookies.SESSID, req.cookies.UID], function (err, arr) {
@@ -55,16 +55,16 @@ app.use(function (req, res, next) {
 			if (arr.length < 1) {
 				res.clearCookie('SESSID');
 				res.clearCookie('UID');
-				
+
 				res.render('login', {
 					title : '登录',
 					msg : '用户身份验证未通过，需要您重新登录'
 				});
-			}else{
+			} else {
 				next();
 			}
 		});
-	}else{
+	} else {
 		next();
 	}
 });
