@@ -52,3 +52,9 @@ date of update: 2015-05-08
 + 了解next()函数的意义
 + 想使用npm的mysql插件的连接池，但是不知道会有什么问题
 
+***
+date of update: 2015-05-19
+---
++ 增加express-session来控制session
++ 去除用数据库的方式控制session
++ 完善登录以及登录后流程及显示内容
