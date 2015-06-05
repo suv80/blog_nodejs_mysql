@@ -1,0 +1,34 @@
+<% include header.ejs %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-8">
+            <textarea id="blogContent" class="form-control" placeholder="今天想说点什么？"></textarea>
+            <div class="text-right">
+                <input class="btn btn-default" type="button" value="提交" onclick="send()"/>
+            </div>
+
+            <% if(list.length <= 0){ %>
+            <h3>还没有内容</h3>
+            <% }%>
+            <% for(i = 0;i < list;i++){ %>
+            <div class="">
+                <p>list.content</p>
+            </div>
+            <% } %>
+        </div>
+        <div class="col-xs-4">
+
+        </div>
+    </div>
+</div>
+<script>
+    function send(){
+        $.post('/saveBlog',{
+            content:$('#blogContent').val()
+        },function(content){
+            console.log(content);
+        });
+    }
+</script>
+<% include footer.ejs %>

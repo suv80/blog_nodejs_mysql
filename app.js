@@ -18,6 +18,8 @@ var register = require('./routes/register');
 var install = require('./routes/install');
 //个人中心
 var myHome = require('./routes/myHome');
+//博客首页
+var blogHome = require('./routes/blogHome');
 
 var app = express();
 
@@ -30,19 +32,24 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-	extended: false
+    extended: false
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+}));
 
-app.use(function(req, res, next) {
-	var views = req.session.views
+app.use(function (req, res, next) {
+    var views = req.session.views;
 
-	if (!views) {
-		views = req.session.views = {}
-	}
+    if (!views) {
+        views = req.session.views = {}
+    }
 
-	next()
+    next()
 });
 
 app.use('/', routes);
@@ -51,12 +58,13 @@ app.use('/login', login);
 app.use('/reg', register);
 app.use('/install', install);
 app.use('/my_home', myHome);
+app.use('/saveBlog', blogHome);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+app.use(function (req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -64,25 +72,25 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render('error', {
-			title: 'ERROR',
-			message: err.message,
-			error: err
-		});
-	});
+    app.use(function (err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            title: 'ERROR',
+            message: err.message,
+            error: err
+        });
+    });
 }
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	res.render('error', {
-		title: 'ERROR',
-		message: err.message,
-		error: {}
-	});
+app.use(function (err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        title: 'ERROR',
+        message: err.message,
+        error: {}
+    });
 });
 
 module.exports = app;
