@@ -20,6 +20,8 @@ var install = require('./routes/install');
 var myHome = require('./routes/myHome');
 //博客首页
 var blogHome = require('./routes/blogHome');
+//保存博客
+var saveBlog = require('./routes/saveBlog');
 
 var app = express();
 
@@ -58,7 +60,8 @@ app.use('/login', login);
 app.use('/reg', register);
 app.use('/install', install);
 app.use('/my_home', myHome);
-app.use('/saveBlog', blogHome);
+app.use('/blogHome', blogHome);
+app.use('/saveBlog', saveBlog);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
