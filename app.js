@@ -16,6 +16,8 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 //初始化数据库
 var install = require('./routes/install');
+//个人中心
+var myHome = require('./routes/myHome');
 
 var app = express();
 
@@ -33,12 +35,6 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-	secret: 'keyboard cat',
-	resave: false,
-	saveUninitialized: true
-}));
-
 app.use(function(req, res, next) {
 	var views = req.session.views
 
@@ -54,6 +50,7 @@ app.use('/users', users);
 app.use('/login', login);
 app.use('/reg', register);
 app.use('/install', install);
+app.use('/my_home', myHome);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

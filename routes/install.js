@@ -3,8 +3,7 @@ var router = express.Router();
 var mysql = require('../libs/dbConn');//数据库操作基本库，要对数据库操作必须引入
 var installModel = require('../libs/installModel');//数据库初始化的模型类，必须引入
 
-
-
+/*GET/POST install page */
 router.get('/', function(req, res, next) {
 	res.render('install', {
 		title: '初始化数据库',

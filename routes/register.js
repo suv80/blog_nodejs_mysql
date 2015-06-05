@@ -7,6 +7,7 @@ var md5 = require('crypto-md5');
 var request = '';
 var response = '';
 
+/*GET/POST register page */
 router.get('/', function (req, res, next) {
 	request = req;
 	response = res;

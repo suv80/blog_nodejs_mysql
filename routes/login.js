@@ -8,6 +8,7 @@ var sourceReq = '';
 var sourceRes = '';
 var params = '';
 
+/*GET/POST login page */
 router.get('/', function (req, res, next) {
 	res.render('login', {
 		title : '登录',
@@ -31,7 +32,7 @@ router.post('/', function (req, res, next) {
 		if (arr.length > 0) {
 			updateLastLoginDate();
 			sourceReq.session.views.userInfo=arr;
-			sourceRes.redirect('/');
+			sourceRes.redirect('/my_home');
 		}else{
 			sourceRes.render('login',{
 				title: '登录失败',
