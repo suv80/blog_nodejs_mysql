@@ -17,7 +17,7 @@
 3、SQL语句可以直接调用函数
 
 ```
-.query('SQL语句',function(err,arr){})
+.query('SQL语句',[],function(err,arr){})
 ```
 
 参数中的第二个参数为SQL语句的参数数组，详见npm中的mysql插件文档，第三个参数为回调函数，会返回两个值，第一个值是nodejs规定的错误状态，真为有错误，假为无错误，在有错误的时候，arr中的值是错误的stack值。
