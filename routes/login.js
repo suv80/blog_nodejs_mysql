@@ -13,8 +13,6 @@ router.get('/', function (req, res, next) {
     sourceReq = req;
     sourceRes = res;
 
-    console.log(req.session.views.userInfo);
-
     if (req.session.views.userInfo) {
         res.redirect('/blogHome');
     }else{

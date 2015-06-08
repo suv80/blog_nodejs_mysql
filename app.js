@@ -22,6 +22,8 @@ var myHome = require('./routes/myHome');
 var blogHome = require('./routes/blogHome');
 //保存博客
 var saveBlog = require('./routes/saveBlog');
+//退出
+var logout = require('./routes/logout');
 
 var app = express();
 
@@ -62,6 +64,7 @@ app.use('/install', install);
 app.use('/my_home', myHome);
 app.use('/blogHome', blogHome);
 app.use('/saveBlog', saveBlog);
+app.use('/logout', logout);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

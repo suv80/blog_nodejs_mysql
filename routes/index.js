@@ -6,11 +6,14 @@ var mysql = require('../libs/dbConn');
 router.get('/', function(req, res, next) {
 	var loginInfo = req.session.views.userInfo;
 	
-	console.log(loginInfo);
-	
 	mysql.query('select * from user_info', function(err, arr) {
 		if (err) {
-			arr = [];
+            res.render('error', {
+                title: 'ERROR',
+                message: err,
+                error: err
+            });
+            return false;
 		}
 
 		res.render('index', {

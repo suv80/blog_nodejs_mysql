@@ -6,7 +6,7 @@ var blogsModel = require('../libs/blogsModel');
 
 /*GET/POST blogs_home page */
 router.get('/', function (req, res, next) {
-    if(!req.session.views.userInfo){
+    if (!req.session.views.userInfo) {
         res.render('login', {
             title: '登录',
             msg: ''
@@ -15,22 +15,30 @@ router.get('/', function (req, res, next) {
         return false;
     }
 
-    var sqlStr = blogsModel.fetchAll();
+    try {
+        var sqlStr = blogsModel.fetchAll();
+        var uid = req.session.views.userInfo[0].id;
 
-    mysql.query(sqlStr, [], function (err, arr) {
-        if (err) {
-            res.render('error', {
-                title: 'ERROR',
-                message: err.stack,
-                error: err
+        mysql.query(sqlStr, [uid], function (err, arr) {
+            if (err) {
+                res.render('error', {
+                    title: 'ERROR',
+                    message: err.stack,
+                    error: err
+                });
+            }
+
+            res.render('blogs_home', {
+                title: "Blogs",
+                list: arr
             });
-        }
-
-        res.render('blogs_home', {
-            title: "Blogs",
-            list: arr
         });
-    });
+    } catch (e) {
+        res.render('login', {
+            title: '登录',
+            msg: ''
+        });
+    }
 });
 
 

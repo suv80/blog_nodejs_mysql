@@ -17,8 +17,12 @@ router.post('/', function(req, res, next) {
     
 	mysql.query(sqlStr,sqlParams,function(err,arr){
 		if(err){
-		    console.log("err message:",err.stack);
-			arr=[];
+            res.render('error', {
+                title: 'ERROR',
+                message: err,
+                error: err
+            });
+            return false;
 		}
 		
 		if(arr.changedRows>=0){

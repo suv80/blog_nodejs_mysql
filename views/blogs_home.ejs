@@ -3,17 +3,18 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-8">
-            <textarea id="blogContent" class="form-control" placeholder="今天想说点什么？"></textarea>
+            <textarea id="blogContent" name="content" class="form-control" placeholder="今天想说点什么？"></textarea>
+
             <div class="text-right">
                 <input class="btn btn-default" type="button" value="提交" onclick="send()"/>
             </div>
 
             <% if(list.length <= 0){ %>
             <h3>还没有内容</h3>
-            <% }%>
-            <% for(i = 0;i < list;i++){ %>
+            <% } %>
+            <% for(i = 0;i < list.length;i++){ %>
             <div class="">
-                <p>list.content</p>
+                <p><%= list[i].content %></p>
             </div>
             <% } %>
         </div>
@@ -23,11 +24,19 @@
     </div>
 </div>
 <script>
-    function send(){
-        $.post('/saveBlog',{
-            content:$('#blogContent').val()
-        },function(content){
+    function send() {
+        $.post('/saveBlog', {
+            content: $('#blogContent').val()
+        }, function (content) {
             console.log(content);
+            try{
+                if(content.status==1){
+                    alert('发布成功');
+                    window.location.reload();
+                }
+            }catch(e){
+                alert('网络出现问题，请联系管理员。');
+            }
         });
     }
 </script>

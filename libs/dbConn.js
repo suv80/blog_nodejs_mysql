@@ -36,7 +36,7 @@ conn.prototype.query = function(sqlStr,arr,callback){
 	
 	connection.query(sqlStr,arr,function(err, rows) {
 		if(err){
-			callback(true,err.stack);
+			callback(err);
 			return false;
 		}
 		
